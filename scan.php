@@ -1,5 +1,8 @@
 <?php
 $dir_name = $_POST['folder'];
+if(!is_dir($dir_name)){
+    mkdir($dir_name);
+}
 // $ocr_files = scandir('ocr_text');
 $files = scandir($dir_name);
 // $current_files = array_merge($ocr_files, $img_files);
