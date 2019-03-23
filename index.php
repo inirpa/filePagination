@@ -92,6 +92,24 @@
     });
 </script>
 <script type="text/javascript">
+    $(document).on('click','.deletePopupFile', function(){
+        var file_name = $(this).attr('filename');
+        var dir_name = $(this).attr('directoryname');
+        $.ajax({
+            method:'POST',
+            url:'delete.php',
+            data:{filename:file_name, dir_name:dir_name},
+            dataType:'json',
+            success:function(response){
+                $('#op_msg').html('File '+file_name+' deleted.');
+                $('#myModal').modal('toggle');
+                $('#infoModal').modal('toggle');
+                scanFiles(dir_name);
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
     $(document).on('click', '.js-btn_pagination', function(){
         var folder = $(this).data('folder');
         var page = $(this).data('page');

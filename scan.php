@@ -52,9 +52,7 @@ if($total_files>5){
     <div class="modal-content">
       <div class="modal-header">
         <p class="modal-title" id="js-modal_fname"></p>
-        <?php /*
-        <button class="btn btn-sm btn-danger deleteFile" style="float: right; top: 20px; right: 50px; position: absolute; border-radius: 60%" title="delete"><i class="fa fa-trash"></i></button>
-        */ ?>
+        <button class="btn btn-sm btn-danger deletePopupFile" style="float: right; top: 20px; right: 50px; position: absolute; border-radius: 60%" title="delete"><i class="fa fa-trash"></i></button>
         <button type="button" class="close" data-dismiss="modal" title="close">&times;</button>
       </div>
       <div class="modal-body" id="js-modal_file_content">
@@ -82,6 +80,8 @@ if($total_files>5){
         },
         success: function(data) {
             $('#js-modal_fname').text(fileName);
+            $('.deletePopupFile').attr('filename',fileName);
+            $('.deletePopupFile').attr('directoryname',dirName);
             $('#js-modal_file_content').html('<embed src="'+dirName+'/'+fileName+'" frameborder="0" width="100%" height="auto">');
         },
         error: function() {
